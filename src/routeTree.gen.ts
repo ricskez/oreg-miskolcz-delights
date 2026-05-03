@@ -9,8 +9,32 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as KapcsolatRouteImport } from './routes/kapcsolat'
+import { Route as GaleriaRouteImport } from './routes/galeria'
+import { Route as EtteremRouteImport } from './routes/etterem'
+import { Route as EtlapRouteImport } from './routes/etlap'
 import { Route as IndexRouteImport } from './routes/index'
 
+const KapcsolatRoute = KapcsolatRouteImport.update({
+  id: '/kapcsolat',
+  path: '/kapcsolat',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GaleriaRoute = GaleriaRouteImport.update({
+  id: '/galeria',
+  path: '/galeria',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EtteremRoute = EtteremRouteImport.update({
+  id: '/etterem',
+  path: '/etterem',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EtlapRoute = EtlapRouteImport.update({
+  id: '/etlap',
+  path: '/etlap',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -19,28 +43,72 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/etlap': typeof EtlapRoute
+  '/etterem': typeof EtteremRoute
+  '/galeria': typeof GaleriaRoute
+  '/kapcsolat': typeof KapcsolatRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/etlap': typeof EtlapRoute
+  '/etterem': typeof EtteremRoute
+  '/galeria': typeof GaleriaRoute
+  '/kapcsolat': typeof KapcsolatRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/etlap': typeof EtlapRoute
+  '/etterem': typeof EtteremRoute
+  '/galeria': typeof GaleriaRoute
+  '/kapcsolat': typeof KapcsolatRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/etlap' | '/etterem' | '/galeria' | '/kapcsolat'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/etlap' | '/etterem' | '/galeria' | '/kapcsolat'
+  id: '__root__' | '/' | '/etlap' | '/etterem' | '/galeria' | '/kapcsolat'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  EtlapRoute: typeof EtlapRoute
+  EtteremRoute: typeof EtteremRoute
+  GaleriaRoute: typeof GaleriaRoute
+  KapcsolatRoute: typeof KapcsolatRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/kapcsolat': {
+      id: '/kapcsolat'
+      path: '/kapcsolat'
+      fullPath: '/kapcsolat'
+      preLoaderRoute: typeof KapcsolatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/galeria': {
+      id: '/galeria'
+      path: '/galeria'
+      fullPath: '/galeria'
+      preLoaderRoute: typeof GaleriaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/etterem': {
+      id: '/etterem'
+      path: '/etterem'
+      fullPath: '/etterem'
+      preLoaderRoute: typeof EtteremRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/etlap': {
+      id: '/etlap'
+      path: '/etlap'
+      fullPath: '/etlap'
+      preLoaderRoute: typeof EtlapRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -53,6 +121,10 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  EtlapRoute: EtlapRoute,
+  EtteremRoute: EtteremRoute,
+  GaleriaRoute: GaleriaRoute,
+  KapcsolatRoute: KapcsolatRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
