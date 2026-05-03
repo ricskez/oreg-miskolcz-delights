@@ -6,17 +6,17 @@ function NotFoundComponent() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
-        <h1 className="text-7xl font-bold text-foreground">404</h1>
-        <h2 className="mt-4 text-xl font-semibold text-foreground">Page not found</h2>
+        <h1 className="font-display text-7xl text-burgundy">404</h1>
+        <h2 className="mt-4 text-xl text-foreground">Az oldal nem található</h2>
         <p className="mt-2 text-sm text-muted-foreground">
-          The page you're looking for doesn't exist or has been moved.
+          A keresett oldal nem létezik vagy elköltözött.
         </p>
         <div className="mt-6">
           <Link
             to="/"
-            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+            className="inline-flex items-center justify-center rounded-full bg-burgundy px-5 py-2.5 text-sm text-cream transition hover:bg-ember"
           >
-            Go home
+            Vissza a kezdőlapra
           </Link>
         </div>
       </div>
@@ -29,20 +29,19 @@ export const Route = createRootRoute({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "Öreg Miskolcz Étterem — Hagyományos magyar konyha Miskolcon" },
+      { name: "description", content: "Öreg Miskolcz Étterem a történelmi belváros szívében. Bajai harcsahalászlé, juhtúrós sztrapacska, vadételek meghitt környezetben." },
+      { name: "author", content: "Öreg Miskolcz Étterem" },
+      { property: "og:title", content: "Öreg Miskolcz Étterem — Miskolc" },
+      { property: "og:description", content: "Hagyományos magyar konyha a Horváth Lajos utcában. Halászlé, vadételek, kézzel készült desszertek." },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
-      {
-        rel: "stylesheet",
-        href: appCss,
-      },
+      { rel: "stylesheet", href: appCss },
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
+      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Work+Sans:wght@300;400;500;600&display=swap" },
     ],
   }),
   shellComponent: RootShell,
@@ -52,7 +51,7 @@ export const Route = createRootRoute({
 
 function RootShell({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="hu">
       <head>
         <HeadContent />
       </head>
